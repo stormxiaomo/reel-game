@@ -25,3 +25,6 @@ dist-ssr
 
 # Temporary files
 tmp_rovodev_*
+
+# Keep docs folder for GitHub Pages
+# docs/

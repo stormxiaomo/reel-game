@@ -113,7 +113,7 @@
   &__no-result {
     @include flex-center;
     height: 80px;
-    color: $text-muted;
+    color: $text-dark;
     font-style: italic;
     
     p {
@@ -139,7 +139,7 @@
     
     .seedcode__progress-text {
       font-size: $font-size-sm;
-      color: $text-muted;
+      color: $text-dark;
       font-style: italic;
     }
   }

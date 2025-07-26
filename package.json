@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:github": "vite build && echo 'Build completed for GitHub Pages'",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:docs": "vite preview --outDir docs"
   },
   "packageManager": "yarn@1.22.0",
   "dependencies": {

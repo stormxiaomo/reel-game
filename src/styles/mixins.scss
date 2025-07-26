@@ -81,13 +81,20 @@
 
 @mixin button-secondary {
   @include button-base;
-  background: transparent;
-  color: $text-primary;
-  border: 2px solid $text-primary;
+  background: rgba(255, 255, 255, 0.9);
+  color: $text-dark;
+  border: 2px solid $primary-color;
   
   &:hover:not(:disabled) {
-    background: $text-primary;
+    background: rgba(255, 255, 255, 1);
     color: $text-dark;
+    border-color: $secondary-color;
+  }
+  
+  &:disabled {
+    background: rgba(255, 255, 255, 0.5);
+    color: rgba(0, 0, 0, 0.4);
+    border-color: rgba(0, 0, 0, 0.2);
   }
 }
 
