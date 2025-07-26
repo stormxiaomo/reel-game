@@ -1,0 +1,297 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.seedcode {
+  margin-bottom: $spacing-xl;
+  
+  &__section {
+    margin-bottom: $spacing-lg;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $text-dark;
+    margin-bottom: $spacing-md;
+    border-bottom: 2px solid $primary-color;
+    padding-bottom: $spacing-sm;
+  }
+  
+  &__display {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: $border-radius-md;
+    padding: $spacing-lg;
+    border: 2px solid $border-light;
+    min-height: 120px;
+  }
+  
+  &__content {
+    .seedcode__hash,
+    .seedcode__raw {
+      margin-bottom: $spacing-md;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  &__label {
+    display: block;
+    font-weight: $font-weight-semibold;
+    color: $text-dark;
+    margin-bottom: $spacing-sm;
+    font-size: $font-size-sm;
+  }
+  
+  &__value {
+    padding: $spacing-md;
+    border-radius: $border-radius-sm;
+    font-family: $font-family-mono;
+    font-size: $font-size-sm;
+    word-break: break-all;
+    line-height: 1.4;
+    
+    &--hash {
+      background: #f8f9fa;
+      border: 1px solid $border-light;
+      color: $text-dark;
+    }
+    
+    &--raw {
+      background: #e3f2fd;
+      border: 1px solid #2196f3;
+      color: #1565c0;
+      animation: highlightReveal 0.5s ease-in-out;
+      position: relative;
+      padding-right: 40px; // 為複製按鈕留空間
+    }
+  }
+  
+  &__highlight {
+    background: $accent-color;
+    color: white;
+    padding: 2px 4px;
+    border-radius: $border-radius-sm;
+    font-weight: $font-weight-bold;
+    animation: pulse 1s ease-in-out 3;
+  }
+  
+  &__breakdown {
+    margin-top: $spacing-md;
+    padding-top: $spacing-md;
+    border-top: 1px solid rgba(33, 150, 243, 0.3);
+  }
+  
+  &__part {
+    @include flex-between;
+    margin-bottom: $spacing-sm;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__part-label {
+    font-weight: $font-weight-medium;
+    color: $text-dark;
+    font-size: $font-size-sm;
+  }
+  
+  &__part-value {
+    font-family: $font-family-mono;
+    font-size: $font-size-sm;
+    color: #1565c0;
+    font-weight: $font-weight-medium;
+  }
+  
+  &__empty,
+  &__no-result {
+    @include flex-center;
+    height: 80px;
+    color: $text-muted;
+    font-style: italic;
+    
+    p {
+      margin: 0;
+    }
+  }
+  
+  &__lottery-progress {
+    @include flex-column-center;
+    height: 80px;
+    gap: $spacing-sm;
+    
+    .seedcode__progress-icon {
+      font-size: $font-size-2xl;
+      animation: spin 2s linear infinite;
+    }
+    
+    p {
+      margin: 0;
+      font-weight: $font-weight-semibold;
+      color: $primary-color;
+    }
+    
+    .seedcode__progress-text {
+      font-size: $font-size-sm;
+      color: $text-muted;
+      font-style: italic;
+    }
+  }
+  
+  &__result {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: $border-radius-md;
+    padding: $spacing-lg;
+    border: 2px solid $border-light;
+    min-height: 80px;
+  }
+  
+  &__winner {
+    @include flex-center;
+    flex-direction: column;
+    text-align: center;
+    gap: $spacing-sm;
+    
+    @include respond-to(md) {
+      flex-direction: row;
+      justify-content: center;
+      gap: $spacing-md;
+    }
+  }
+  
+  &__copy-btn {
+    @include button-base;
+    background: $primary-color;
+    color: white;
+    font-size: $font-size-sm;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+    
+    &:hover {
+      background: darken($primary-color, 10%);
+      transform: scale(1.05);
+    }
+    
+    &--inline {
+      position: absolute;
+      top: $spacing-xs;
+      right: $spacing-xs;
+      padding: 2px 6px;
+      font-size: $font-size-xs;
+      min-width: auto;
+      height: auto;
+      line-height: 1;
+    }
+  }
+  
+  &__winner-label {
+    font-weight: $font-weight-semibold;
+    color: $text-dark;
+    margin-bottom: $spacing-sm;
+    
+    @include respond-to(md) {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__winner-name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $accent-color;
+    margin-bottom: $spacing-sm;
+    animation: winnerReveal 0.8s ease-out;
+    
+    @include respond-to(md) {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__winner-number {
+    font-size: $font-size-base;
+    color: $text-muted;
+    font-weight: $font-weight-medium;
+  }
+  
+  &__actions {
+    margin-top: $spacing-lg;
+    @include flex-center;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+  
+  &__warning {
+    background: #fff3cd;
+    color: #856404;
+    padding: $spacing-md;
+    border-radius: $border-radius-md;
+    border: 1px solid #ffeaa7;
+    font-size: $font-size-sm;
+    text-align: center;
+    font-weight: $font-weight-medium;
+    animation: warningPulse 2s ease-in-out infinite;
+  }
+}
+
+// Animations
+@keyframes highlightReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes winnerReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes warningPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+// Responsive adjustments
+@include respond-to(md) {
+  .seedcode {
+    &__value {
+      font-size: $font-size-base;
+    }
+    
+    &__part-label,
+    &__part-value {
+      font-size: $font-size-base;
+    }
+  }
+}

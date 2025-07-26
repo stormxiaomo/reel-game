@@ -1,0 +1,101 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.modal {
+  &__overlay {
+    @include modal-overlay;
+    opacity: 0;
+    visibility: hidden;
+    transition: all $transition-base;
+    
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  
+  &__content {
+    @include modal-content;
+    transform: translateY(-50px) scale(0.95);
+    transition: transform $transition-base;
+    
+    .modal__overlay--active & {
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid $border-light;
+  }
+  
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    margin: 0;
+    color: $text-dark;
+  }
+  
+  &__close {
+    background: none;
+    border: none;
+    font-size: $font-size-2xl;
+    cursor: pointer;
+    padding: $spacing-xs;
+    color: $text-muted;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    @include flex-center;
+    border-radius: $border-radius-round;
+    transition: all $transition-fast;
+    
+    &:hover {
+      color: $text-dark;
+      background: rgba($text-dark, 0.1);
+    }
+  }
+  
+  &__body {
+    margin-bottom: $spacing-lg;
+  }
+  
+  &__footer {
+    @include flex-between;
+    gap: $spacing-md;
+    
+    .btn {
+      flex: 1;
+      
+      @include respond-to(md) {
+        flex: none;
+        min-width: 100px;
+      }
+    }
+  }
+}
+
+// Animation keyframes
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.95);
+  }
+}

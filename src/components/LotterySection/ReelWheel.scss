@@ -1,0 +1,161 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+// Static Reel State
+.reel-static {
+  @include flex-center;
+  width: 100%;
+  height: 100%;
+  
+  .reel-placeholder {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $text-muted;
+    text-align: center;
+    padding: $spacing-lg;
+    
+    @include respond-to(md) {
+      font-size: $font-size-xl;
+    }
+  }
+}
+
+// Reel Preview
+.reel-preview {
+  @include flex-column-center;
+  gap: $spacing-sm;
+  
+  &__title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $primary-color;
+  }
+  
+  &__count {
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $accent-color;
+  }
+  
+  &__names {
+    @include flex-column-center;
+    gap: $spacing-xs;
+    max-width: 200px;
+  }
+  
+  &__name {
+    font-size: $font-size-sm;
+    color: $text-dark;
+    background: rgba($primary-color, 0.1);
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+  }
+  
+  &__more {
+    font-size: $font-size-xs;
+    color: $text-muted;
+    font-style: italic;
+  }
+}
+
+// Reel Winner Display
+.reel-winner-display {
+  @include flex-column-center;
+  gap: $spacing-sm;
+  
+  .reel-winner-title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-muted;
+  }
+  
+  .reel-winner-name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+    padding: $spacing-sm $spacing-lg;
+    background: rgba($primary-color, 0.1);
+    border-radius: $border-radius-md;
+    border: 2px solid $primary-color;
+  }
+  
+  .reel-winner-subtitle {
+    font-size: $font-size-xs;
+    color: $text-muted;
+    font-style: italic;
+    animation: pulse 2s ease-in-out infinite;
+  }
+}
+
+// Spinning Reel State
+.reel-spinning {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  
+  .reel-items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    animation: reelSpinFast 0.03s linear infinite;
+    
+    // 當動畫結束時，停在正確位置
+    &.reel-stopping {
+      animation: reelSpinSlow 3s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    }
+  }
+  
+  .reel-item {
+    @include flex-center;
+    height: 60px;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $text-dark;
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid $border-light;
+    padding: 0 $spacing-md;
+    text-align: center;
+    
+    @include respond-to(md) {
+      height: 80px;
+      font-size: $font-size-lg;
+    }
+    
+    &:nth-child(odd) {
+      background: rgba($primary-color, 0.1);
+    }
+  }
+}
+
+// Animations
+@keyframes reelSpinFast {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-60px);
+  }
+}
+
+@keyframes reelSpinSlow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(calc(var(--item-height, 60px) * var(--winner-position, 0) * -1));
+  }
+}
+
+// 響應式動畫
+@include respond-to(md) {
+  @keyframes reelSpinFast {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-80px);
+    }
+  }
+}

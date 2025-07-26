@@ -1,0 +1,291 @@
+// Component Styles - BEM Naming Convention
+@import './variables.scss';
+@import './mixins.scss';
+
+// ===== Button Components =====
+.btn {
+  @include button-base;
+  
+  &--primary {
+    @include button-primary;
+  }
+  
+  &--secondary {
+    @include button-base;
+    background: rgba(0, 0, 0, 0.1);
+    color: $text-primary;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    
+    &:hover:not(:disabled) {
+      background: rgba(0, 0, 0, 0.2);
+      border-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+    }
+    
+    &:disabled {
+      background: rgba(0, 0, 0, 0.05);
+      color: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.2);
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+  
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+  
+  &--small {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+  }
+  
+  &--large {
+    padding: $spacing-md $spacing-xl;
+    font-size: $font-size-lg;
+  }
+  
+  &--full-width {
+    width: 100%;
+  }
+}
+
+// ===== Card Components =====
+.card {
+  @include card;
+  
+  &__header {
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid $border-light;
+  }
+  
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &__content {
+    margin-bottom: $spacing-lg;
+  }
+  
+  &__footer {
+    margin-top: $spacing-lg;
+    padding-top: $spacing-md;
+    border-top: 1px solid $border-light;
+    @include flex-between;
+  }
+}
+
+// ===== Modal Components =====
+.modal {
+  &__overlay {
+    @include modal-overlay;
+    opacity: 0;
+    visibility: hidden;
+    transition: all $transition-base;
+    
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  
+  &__content {
+    @include modal-content;
+    transform: translateY(-50px);
+    transition: transform $transition-base;
+  }
+  
+  &__overlay--active &__content {
+    transform: translateY(0);
+  }
+  
+  &__header {
+    @include flex-between;
+    margin-bottom: $spacing-lg;
+    padding-bottom: $spacing-md;
+    border-bottom: 1px solid $border-light;
+  }
+  
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-semibold;
+    margin: 0;
+  }
+  
+  &__close {
+    background: none;
+    border: none;
+    font-size: $font-size-xl;
+    cursor: pointer;
+    padding: $spacing-xs;
+    color: $text-muted;
+    
+    &:hover {
+      color: $text-dark;
+    }
+  }
+  
+  &__body {
+    margin-bottom: $spacing-lg;
+  }
+  
+  &__footer {
+    @include flex-between;
+    gap: $spacing-md;
+  }
+}
+
+// ===== Form Components =====
+.form {
+  &__group {
+    margin-bottom: $spacing-lg;
+  }
+  
+  &__label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    font-weight: $font-weight-medium;
+    color: $text-dark;
+  }
+  
+  &__input {
+    width: 100%;
+    padding: $spacing-md;
+    border: 2px solid $border-light;
+    border-radius: $border-radius-md;
+    font-size: $font-size-base;
+    transition: border-color $transition-fast;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+    }
+    
+    &--error {
+      border-color: $accent-color;
+    }
+  }
+  
+  &__textarea {
+    @extend .form__input;
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  &__error {
+    color: $accent-color;
+    font-size: $font-size-sm;
+    margin-top: $spacing-xs;
+  }
+  
+  &__help {
+    margin-top: $spacing-xs;
+    
+    .form__help-text {
+      color: $text-dark;
+      font-size: $font-size-sm;
+      display: block;
+    }
+    
+    .form__help-enabled {
+      color: $primary-color;
+      font-size: $font-size-sm;
+      font-weight: $font-weight-medium;
+      display: block;
+      margin-top: $spacing-xs;
+    }
+  }
+}
+
+// ===== List Components =====
+.list {
+  list-style: none;
+  
+  &__item {
+    padding: $spacing-md;
+    border-bottom: 1px solid $border-light;
+    @include flex-between;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    &:hover {
+      background-color: rgba($primary-color, 0.05);
+    }
+  }
+  
+  &__content {
+    flex: 1;
+    @include flex-center;
+    justify-content: flex-start;
+    gap: $spacing-sm;
+    min-height: 32px;
+  }
+  
+  &__actions {
+    @include flex-center;
+    gap: $spacing-sm;
+  }
+  
+  &__number {
+    font-weight: $font-weight-semibold;
+    color: $primary-color;
+    margin-right: $spacing-md;
+    min-width: 30px;
+    flex-shrink: 0;
+  }
+  
+  &__name {
+    flex: 1;
+    font-size: $font-size-base;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  &__remove {
+    background: $accent-color;
+    color: white;
+    border: none;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-xs;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+    
+    &:hover {
+      background: darken($accent-color, 10%);
+    }
+  }
+}
+
+// ===== Loading Components =====
+.loading {
+  @include flex-center;
+  
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid $border-light;
+    border-top: 4px solid $primary-color;
+    border-radius: $border-radius-round;
+    animation: spin 1s linear infinite;
+  }
+  
+  &__text {
+    margin-left: $spacing-md;
+    color: $text-muted;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

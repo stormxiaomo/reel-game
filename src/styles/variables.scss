@@ -1,0 +1,96 @@
+// SCSS Variables - BEM Naming Convention
+
+// ===== Colors =====
+$primary-color: #667eea;
+$secondary-color: #764ba2;
+$accent-color: #ff6b6b;
+$accent-secondary: #ee5a24;
+
+$background-gradient: linear-gradient(135deg, $primary-color 0%, $secondary-color 100%);
+$button-gradient: linear-gradient(45deg, $accent-color, $accent-secondary);
+
+$text-primary: #ffffff;
+$text-secondary: #f8f9fa;
+$text-dark: #333333;
+$text-muted: rgba(255, 255, 255, 0.9);
+
+$border-color: #cccccc;
+$border-light: #e9ecef;
+$shadow-color: rgba(0, 0, 0, 0.2);
+$shadow-dark: rgba(0, 0, 0, 0.3);
+$modal-overlay: rgba(0, 0, 0, 0.4);
+
+// ===== Typography =====
+$font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$font-family-mono: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-2xl: 1.5rem;    // 24px
+$font-size-3xl: 2rem;      // 32px
+$font-size-4xl: 2.5rem;    // 40px
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// ===== Spacing =====
+$spacing-xs: 0.25rem;   // 4px
+$spacing-sm: 0.5rem;    // 8px
+$spacing-md: 1rem;      // 16px
+$spacing-lg: 1.5rem;    // 24px
+$spacing-xl: 2rem;      // 32px
+$spacing-2xl: 3rem;     // 48px
+$spacing-3xl: 4rem;     // 64px
+
+// ===== Border Radius =====
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-round: 50%;
+$border-radius-pill: 25px;
+
+// ===== Shadows =====
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 15px $shadow-color;
+$shadow-lg: 0 6px 20px $shadow-dark;
+$shadow-xl: 0 8px 32px $shadow-color;
+
+// ===== Breakpoints (RWD) =====
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1200px;
+$breakpoint-xl: 1920px;
+
+// ===== Z-index =====
+$z-index-dropdown: 1000;
+$z-index-modal: 1050;
+$z-index-tooltip: 1070;
+$z-index-toast: 1080;
+
+// ===== Transitions =====
+$transition-fast: 0.15s ease;
+$transition-base: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// ===== Component Specific =====
+// Reel Wheel
+$reel-width: 400px;
+$reel-height: 400px;
+$reel-border: 2px solid $border-color;
+$reel-background: #f9f9f9;
+
+// Buttons
+$button-padding: 12px 24px;
+$button-font-size: $font-size-base;
+$button-border-radius: $border-radius-pill;
+
+// Modal
+$modal-max-width: 500px;
+$modal-padding: $spacing-xl;
+$modal-border-radius: $border-radius-lg;

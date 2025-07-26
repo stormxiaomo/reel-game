@@ -1,0 +1,68 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.infinite-reel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  
+  &__empty {
+    @include flex-center;
+    width: 100%;
+    height: 100%;
+    font-size: $font-size-lg;
+    color: $text-muted;
+    font-style: italic;
+  }
+  
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: none; // 由 JavaScript 控制動畫
+  }
+  
+  &__cycle {
+    width: 100%;
+  }
+  
+  &__item {
+    @include flex-center;
+    width: 100%;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $text-dark;
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid $border-light;
+    padding: 0 $spacing-md;
+    text-align: center;
+    
+    @include respond-to(md) {
+      font-size: $font-size-lg;
+    }
+    
+    &:nth-child(odd) {
+      background: rgba($primary-color, 0.1);
+    }
+    
+    &--winner {
+      background: $accent-color !important;
+      color: white !important;
+      font-weight: $font-weight-bold;
+      animation: winnerHighlight 1s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes winnerHighlight {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba($accent-color, 0.7);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 5px rgba($accent-color, 0);
+  }
+}

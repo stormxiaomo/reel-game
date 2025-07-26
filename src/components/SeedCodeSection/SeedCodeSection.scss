@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.seedcode-section {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: $border-radius-lg;
+  padding: $spacing-lg;
+  box-shadow: $shadow-xl;
+  backdrop-filter: blur(10px);
+  height: fit-content;
+  max-height: 80vh;
+  overflow-y: auto;
+  min-width: 400px;
+  
+  &__content {
+    @include flex-column;
+    gap: $spacing-lg;
+  }
+  
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $text-dark;
+    text-align: center;
+    margin: 0;
+    border-bottom: 2px solid $primary-color;
+    padding-bottom: $spacing-sm;
+    
+    @include respond-to(md) {
+      font-size: $font-size-xl;
+    }
+  }
+}
+
+// Responsive adjustments
+@include respond-to(md) {
+  .seedcode-section {
+    padding: $spacing-xl;
+  }
+}
+
+@include respond-between($breakpoint-sm, $breakpoint-md) {
+  .seedcode-section {
+    padding: $spacing-md;
+    
+    &__title {
+      font-size: $font-size-base;
+    }
+  }
+}

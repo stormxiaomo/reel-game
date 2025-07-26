@@ -1,0 +1,183 @@
+// SCSS Mixins - BEM Naming Convention
+
+// ===== Responsive Breakpoints =====
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  }
+  @if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}
+
+@mixin respond-between($min, $max) {
+  @media (min-width: $min) and (max-width: $max - 1px) { @content; }
+}
+
+// ===== Flexbox Utilities =====
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  @include flex-column;
+  justify-content: center;
+  align-items: center;
+}
+
+// ===== Button Styles =====
+@mixin button-base {
+  border: none;
+  cursor: pointer;
+  font-family: $font-family-primary;
+  font-size: $button-font-size;
+  padding: $button-padding;
+  border-radius: $button-border-radius;
+  transition: all $transition-base;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: $button-gradient;
+  color: $text-primary;
+  box-shadow: $shadow-md;
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+  
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background: transparent;
+  color: $text-primary;
+  border: 2px solid $text-primary;
+  
+  &:hover:not(:disabled) {
+    background: $text-primary;
+    color: $text-dark;
+  }
+}
+
+// ===== Card Styles =====
+@mixin card {
+  background: white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  padding: $spacing-xl;
+  
+  &:hover {
+    box-shadow: $shadow-lg;
+    transform: translateY(-2px);
+    transition: all $transition-base;
+  }
+}
+
+// ===== Modal Styles =====
+@mixin modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $modal-overlay;
+  @include flex-center;
+  z-index: $z-index-modal;
+}
+
+@mixin modal-content {
+  background: white;
+  border-radius: $modal-border-radius;
+  padding: $modal-padding;
+  max-width: $modal-max-width;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: $shadow-xl;
+}
+
+// ===== Text Utilities =====
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-shadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+// ===== Animation Utilities =====
+@mixin hover-lift {
+  transition: transform $transition-base;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@mixin pulse-animation {
+  animation: pulse 2s infinite;
+  
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
+}
+
+// ===== Layout Utilities =====
+@mixin container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+  
+  @include respond-to(lg) {
+    padding: 0 $spacing-xl;
+  }
+}
+
+@mixin section-spacing {
+  padding: $spacing-xl 0;
+  
+  @include respond-to(md) {
+    padding: $spacing-2xl 0;
+  }
+  
+  @include respond-to(lg) {
+    padding: $spacing-3xl 0;
+  }
+}

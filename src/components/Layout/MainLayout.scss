@@ -1,0 +1,68 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.main-layout {
+  min-height: 100vh;
+  background: $background-gradient;
+  padding: $spacing-md;
+  
+  &__container {
+    @include container;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    gap: $spacing-lg;
+    
+    @include respond-to(md) {
+      grid-template-rows: auto 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: $spacing-xl;
+    }
+    
+    @include respond-to(lg) {
+      grid-template-rows: auto 1fr;
+      grid-template-columns: 400px 2fr 1fr;
+      gap: $spacing-2xl;
+    }
+  }
+}
+
+// Grid Areas for different sections
+.main-layout__header {
+  grid-column: 1 / -1;
+  
+  @include respond-to(md) {
+    grid-column: 1 / -1;
+  }
+}
+
+.main-layout__seedcode {
+  grid-column: 1;
+  grid-row: 2;
+  
+  @include respond-to(md) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+}
+
+.main-layout__lottery {
+  grid-column: 1;
+  grid-row: 3;
+  
+  @include respond-to(md) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+.main-layout__namelist {
+  grid-column: 1;
+  grid-row: 4;
+  
+  @include respond-to(md) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+}

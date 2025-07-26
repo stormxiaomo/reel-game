@@ -1,0 +1,43 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.header {
+  @include flex-center;
+  
+  &__content {
+    @include flex-column-center;
+    text-align: center;
+  }
+  
+  &__title {
+    font-size: $font-size-4xl;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+    margin-bottom: $spacing-md;
+    @include text-shadow;
+    
+    @include respond-to(md) {
+      font-size: 3.5rem;
+    }
+    
+    @include respond-to(lg) {
+      font-size: 4rem;
+    }
+  }
+  
+  &__time {
+    font-size: $font-size-lg;
+    color: $text-secondary;
+    font-weight: $font-weight-medium;
+    font-family: $font-family-mono;
+    background: rgba(255, 255, 255, 0.1);
+    padding: $spacing-sm $spacing-lg;
+    border-radius: $border-radius-pill;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    @include respond-to(md) {
+      font-size: $font-size-xl;
+    }
+  }
+}
